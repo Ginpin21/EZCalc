@@ -116,18 +116,39 @@ def student_menu(u_name):
         7.Back to menu
 =========================================================================
         """)
+        df2=pd.read_csv("Functions.csv",names=["Function","Enabled"],index_col="Function")
         try:
             ch=int(input("Enter your choice: "))
             if ch==1:
-                pass
+                if df2.at["Arithmetic","Enabled"]==True:
+                   print("The function is enabled")  
+                else: 
+                    print("The function is disabled")
+                next()
             elif ch==2:
-                pass        
+                if df2.at["Factorial","Enabled"]==True:
+                   print("The function is enabled")  
+                else: 
+                    print("The function is disabled")
+                next()
             elif ch==3:
-                pass
+                if df2.at["Trigonometric","Enabled"]==True:
+                   print("The function is enabled")  
+                else: 
+                    print("The function is disabled")
+                next()
             elif ch==4:
-                pass
+                if df2.at["Binary","Enabled"]==True:
+                   print("The function is enabled")  
+                else: 
+                    print("The function is disabled")
+                next()
             elif ch==5:
-                pass
+                if df2.at["Area","Enabled"]==True:
+                   print("The function is enabled")  
+                else: 
+                    print("The function is disabled")
+                next()
             elif ch==6:
                 change_pass(name1)
             elif ch==7:

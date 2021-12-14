@@ -1,3 +1,5 @@
 Arithmetic,True
-Binary,True
+Factorial,True
 Trigonometric,True
+Binary,False
+Area,True
