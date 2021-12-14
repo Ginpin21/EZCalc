@@ -1,5 +1,6 @@
 import Classes as cl
 import pandas as pd
+import Operations as op
 #===============================================================================================================================================
 def next():
     input("\n Press any buttion to continue....")
@@ -121,33 +122,33 @@ def student_menu(u_name):
             ch=int(input("Enter your choice: "))
             if ch==1:
                 if df2.at["Arithmetic","Enabled"]==True:
-                   print("The function is enabled")  
+                    op.arithmetic()
                 else: 
-                    print("The function is disabled")
+                    print("The function has been disabled")
                 next()
             elif ch==2:
                 if df2.at["Factorial","Enabled"]==True:
-                   print("The function is enabled")  
+                   print("Avinash will add this")  
                 else: 
-                    print("The function is disabled")
+                    print("The function has been disabled")
                 next()
             elif ch==3:
                 if df2.at["Trigonometric","Enabled"]==True:
-                   print("The function is enabled")  
+                   op.trigonometric() 
                 else: 
-                    print("The function is disabled")
+                    print("The function has been disabled")
                 next()
             elif ch==4:
                 if df2.at["Binary","Enabled"]==True:
-                   print("The function is enabled")  
+                   op.decimaltobinary()
                 else: 
-                    print("The function is disabled")
+                    print("The function has been disabled")
                 next()
             elif ch==5:
                 if df2.at["Area","Enabled"]==True:
-                   print("The function is enabled")  
+                   print("Avinash will add this")  
                 else: 
-                    print("The function is disabled")
+                    print("The function has been disabled")
                 next()
             elif ch==6:
                 change_pass(name1)
