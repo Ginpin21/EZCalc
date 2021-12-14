@@ -41,43 +41,52 @@ def trigonometric():
             print("Please enter an integer")
 
 def arithmetic():
-    print("""
+    while(True):
+        print("""
 =========================================================================
-        Arithmetic Functions
+            Arithmetic Functions
 =========================================================================
-          1. Add
-          2. Subtract
-          3. Multiply
-          4. Divide
-          5. Power
+            1. Add
+            2. Subtract
+            3. Multiply
+            4. Divide
+            5. Power
+            6. Back to menu
 =========================================================================
-    """)
-    try:
-        ch3=int(input("Enter your Choice: "))
-        if ch3 == 1:
-            a=float(input("Enter the first number: "))
-            b=float(input("Enter the second number: "))
-            print(a+b)
-        elif ch3 == 2:
-            a = float(input("Enter the first number: "))
-            b = float(input("Enter the second number: "))
-            print(a - b)
-        elif ch3 == 3:
-            a = float(input("Enter the first number: "))
-            b = float(input("Enter the second number: "))
-            print(a * b)
-        elif ch3 == 4:
-            a = float(input("Enter your first number: "))
-            b = float(input("Enter your second number: "))
-            print(a / b)
-        elif ch3 == 5:
-            a = float(input("Enter your number: "))
-            b = float(input("Enter the power: "))
-            print(a ** b)
-        else:
-            print("Invalid Choice")
-    except ValueError:
-        print("Please enter an integer")
+        """)
+        try:
+            ch3=int(input("Enter your Choice: "))
+            if ch3 == 1:
+                a=float(input("Enter the first number: "))
+                b=float(input("Enter the second number: "))
+                print(f"{a} + {b} =".format(a,b),a+b)
+                break
+            elif ch3 == 2:
+                a = float(input("Enter the first number: "))
+                b = float(input("Enter the second number: "))
+                print(f"{a}- {b} = ".format(a,b),a - b)
+                break
+            elif ch3 == 3:
+                a = float(input("Enter the first number: "))
+                b = float(input("Enter the second number: "))
+                print(f"{a} * {b} = ".format(a,b),a * b)
+                break
+            elif ch3 == 4:
+                a = float(input("Enter your first number: "))
+                b = float(input("Enter your second number: "))
+                print(f"{a} / {b} = ".format(a,b),a / b)
+                break
+            elif ch3 == 5:
+                a = float(input("Enter your number: "))
+                b = float(input("Enter the power: "))
+                print(f"{a} ^ {b} = ".format(a,b),a ** b)
+                break
+            elif ch3 == 6:
+                 break
+            else:
+                print("Invalid Choice")
+        except ValueError:
+            print("Please enter an integer")
 
 def decimaltobinary():
     try:
@@ -95,7 +104,57 @@ def decimaltobinary():
 
 
 
+def calculate_area():
+    while True:
+        print("""
+=========================================================================
+            Area Functions
+=========================================================================
+            1. Rectangle
+            2. Triangle
+            3. Circle
+            4. Back to menu
+            
+            Note: All values entered will be considered in metres
+=========================================================================
+        """)
+        try:
+            ch4=int(input("Enter your choice: "))
+            if ch4 == 1:
+                l = int(input("Enter rectangle's length: "))
+                b = int(input("Enter rectangle's breadth: "))
+                rect_area = l * b
+                print("The area of rectangle is",rect_area,"m²")
+                break
+            elif ch4==2:
+                h = float(input("Enter triangle's height: "))
+                b = float(input("Enter triangle's base: "))        
+                tri_area = 0.5 * b * h
+                print("The area of the triangle is",tri_area,"m²")
+                break
+            elif ch4==3:
+                r = float(input("Enter circle's radius: ")) 
+                circ_area = round(math.pi*(r**2),2)
+                print("The area of the circle is",circ_area,"m²")
+                break
+            elif ch4==5:
+                break                       
+            else:
+                print("Sorry, this shape is not available")
+        except ValueError:
+            print("Please enter a numeric value.")
 
+
+def factorial():
+    try:
+        num=int(input("Enter the number whose factorial is to be calculated: "))
+        f=1
+        if num>1:
+            for i in range(1,num+1):
+                f*=i
+        print(num,"! = ",f)
+    except ValueError:
+        print("Please enter an integer.")
 
 
 

@@ -128,7 +128,7 @@ def student_menu(u_name):
                 next()
             elif ch==2:
                 if df2.at["Factorial","Enabled"]==True:
-                   print("Avinash will add this")  
+                   op.factorial() 
                 else: 
                     print("The function has been disabled")
                 next()
@@ -146,7 +146,7 @@ def student_menu(u_name):
                 next()
             elif ch==5:
                 if df2.at["Area","Enabled"]==True:
-                   print("Avinash will add this")  
+                   op.calculate_area()  
                 else: 
                     print("The function has been disabled")
                 next()
