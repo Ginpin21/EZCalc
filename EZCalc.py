@@ -28,6 +28,17 @@ def new_user(u_type):
         l1=[t1.username,t1.password,u_type]
         df=pd.DataFrame([l1])
         df.to_csv("Users.csv",mode="a",header=0,index=0)
+    elif u_type=="Admin":
+        a1=cl.admin("","")
+        a1.new()
+        dup_check=find_user(a1.username)
+        while dup_check < 0:
+            new_name=input("The username "+a1.username+" is already taken please enter a new username: ")
+            a1.username=new_name
+            dup_check=find_user(new_name)  
+        l1=[a1.username,a1.password,u_type]
+        df=pd.DataFrame([l1])
+        df.to_csv("Users.csv",mode="a",header=0,index=0)
     print("New",u_type,"added")
     next()
 
@@ -40,7 +51,7 @@ def change_pass(u_name):
     if search==-1:
         pass1=input("Enter your current password: ")
         for i in df.itertuples():
-            if pass1==i[1]:
+            if pass1==i[1] and u_name==i[0]:
                 new_pass=input("Enter the new password: ")
                 df.at[u_name,"Password"]=new_pass
                 df.to_csv("Users.csv",header=False,columns=None)
@@ -104,7 +115,7 @@ def find_user(u_name):
 def student_menu(u_name):
     name1=u_name
     while True:
-        print("""
+        print(f"""
 =========================================================================
         Welcome to Student's Menu
 =========================================================================
@@ -115,8 +126,10 @@ def student_menu(u_name):
         5.Area Functions
         6.Change Password
         7.Back to menu
+
+        Currently logged in as: {name1}
 =========================================================================
-        """)
+        """.format(name1))
         df2=pd.read_csv("Functions.csv",names=["Function","Enabled"],index_col="Function")
         try:
             ch=int(input("Enter your choice: "))
@@ -164,9 +177,9 @@ def student_menu(u_name):
 def teacher_menu(u_name):
     name1=u_name
     while True:
-        print("""
+        print(f"""
 =========================================================================
-        Welcome to Teacher's Menu
+        Welcome to Teacher's Menu                   
 =========================================================================
         1.View student usernames
         2.Enable function
@@ -174,8 +187,10 @@ def teacher_menu(u_name):
         4.Check all functions status
         5.Change Password
         6.Back to menu
+
+        Currently logged in as: {name1}
 =========================================================================
-        """)
+        """.format(name1))
         try:
             ch=int(input("Enter your choice: "))
             if ch==1:
@@ -206,17 +221,22 @@ def teacher_menu(u_name):
                 print("Please enter an integer")
                 next()        
 #===============================================================================================================================================
-def admin_menu():
+def admin_menu(u_name):
+    name1=u_name
     while True:
-        print("""
+        print(f"""
 =========================================================================
         Welcome to Admin Menu
 =========================================================================
         1.Add new student
         2.Add new teacher
-        3.View all users info
-        4.Back to menu
-=========================================================================""")
+        3.Add new admin
+        4.View all users info
+        5.Change pasword
+        6.Back to menu
+
+        Currently logged in as: {name1}
+=========================================================================""".format(name1))
         try:
             ch=int(input("Enter your choice: "))
             if ch==1:
@@ -224,12 +244,17 @@ def admin_menu():
             elif ch==2:
                 new_user("Teacher")
             elif ch==3:
+                new_user("Admin")
+            elif ch==4:
                 col_names=["Username","Password","Type"]
                 df=pd.DataFrame()
                 df=pd.read_csv("Users.csv",index_col="Username",names=col_names)
+                df.sort_values("Type",inplace=True)
                 print(df)
                 next()
-            elif ch==4:
+            elif ch==5:
+                change_pass(name1)
+            elif ch==6:
                 next()
                 break
             else:
@@ -284,8 +309,14 @@ def main_menu():
             elif ch==3:
                 name1=str(input("Enter the username: "))
                 pass1=str(input("Enter the password: "))
-                if name1=="admin" and pass1=="admin123":
-                    admin_menu()
+                col_names=["Username","Password","Type"]
+                df=pd.DataFrame()
+                df=pd.read_csv("Users.csv",index_col="Username",names=col_names)
+                df.sort_values("Type",inplace=True)
+                for i in df.itertuples():
+                    if name1==i[0] and pass1==i[1]:             
+                        admin_menu(name1)
+                        break
                 else:
                     print("Invalid username or password")
                     next()

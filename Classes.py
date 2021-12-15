@@ -2,8 +2,6 @@ class student:
     def __init__(self,username,password):
         self.username=username
         self.password=password
-    def details(self):
-        print(self.username+"\t\t\t"+self.password)
     def new(self):
         name1=str(input("Enter the username: "))
         password1=str(input("Enter the password: "))
@@ -20,8 +18,6 @@ class teacher:
     def __init__(self,username,password):
         self.username=username
         self.password=password
-    def details(self):
-        print(self.username+"\t\t\t"+self.password)
     def new(self):
         name1=str(input("Enter the username: "))
         password1=str(input("Enter the password: "))
@@ -36,8 +32,6 @@ class admin:
     def __init__(self,username,password):
         self.username=username
         self.password=password
-    def details(self):
-        print(self.username+"\t\t\t"+self.password)
     def new(self):
         name1=str(input("Enter the username: "))
         password1=str(input("Enter the password: "))
