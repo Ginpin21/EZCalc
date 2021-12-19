@@ -74,7 +74,7 @@ def enable(func_name):
             df2.to_csv("Functions.csv",header=False,columns=None)
             print(func_name,"function enabled")
             break
-        elif i[0]==func_name and i[1]==True:
+        elif i[0]==func_name and i[1]==True: # prints if function is already enabled
             print("The function is already enabled")
             break
     else:
@@ -103,12 +103,12 @@ def find_user(u_name):
         df=pd.read_csv("Users.csv",names=col_names,index_col="Username")
         for i in df.itertuples():
             if u_name==i[0]:
-                return -1
+                return -1 # user exists
                 break
         else:
-            return  1  
+            return  1  # user does not exist
     except FileNotFoundError:
-        return 0
+        return 0 # csv file not made
 
 
 #===============================================================================================================================================
