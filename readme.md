@@ -12,7 +12,7 @@ This is the EZCalc program, it is a calculator for students to solve calculation
 2. Python pandas library
 
 # How to run
-1. AFter downloading the zip file, extract it.
+1. After downloading the zip file, extract it.
 2. Open EZCalc.py with your python IDE.
 3. Run it.
 4. Enjoy!
