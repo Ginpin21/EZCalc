@@ -1,5 +1,5 @@
 # EZCalc
-This is the EZCalc program, it is a calculator for students to solve calculations quickly.
+This is the EZCalc program, it is a CLI based calculator for students to solve calculations quickly.
 
 # Requirements:
 ## Hardware:
